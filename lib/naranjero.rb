@@ -1,23 +1,44 @@
+#encoding: UTF-8
 require "naranjero/version"
 
 module Naranjero
   
-  ARBOLPRODUCE = 5 
-  NARANJAS = 10
+  ANYOPRODUCE = 5 
+  NARANJASANYO = 10
+  MUERTE = 100
+  ALTURAANYO = 0.25
   
   class Arbol
-      
+      attr_accessor :altura,:edad,:produccion
       def initialize(altura=0,edad=0)
         @altura = altura
         @edad = edad
-        if(@edad > ARBOLPRODUCE)
-            @produccion = @edad * NARANJAS
-        else
-            @produccion = 0
-        end
+        cantidadProduccion
       end
       
-  end
+      def uno_mas
+          cadena = ""
+          @altura += ALTURAANYO
+          @edad += 1
+          if @edad == MUERTE
+              cadena = "Lo sentimos el árbol ha muerto"
+          else
+              cantidadProduccion
+              cadena = "El árbol ha crecido! Ya tiene #{@edad} años"
+          end
+          cadena
+      end
+      
+      def cantidadProduccion
+          if(@edad > ANYOPRODUCE)
+            @produccion = @edad * NARANJASANYO
+          else
+            @produccion = 0
+          end
+      end
+      
+      
+    end
   
   
   
