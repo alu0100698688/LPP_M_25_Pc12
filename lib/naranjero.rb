@@ -29,6 +29,18 @@ module Naranjero
           cadena
       end
       
+      def recolectar_una
+         cadena = ""
+         if @produccion > 0
+            @produccion -= 1
+            cadena = "¡Uy que rica estaba la naranja!"
+         else
+             cadena = "Lo sentimos pero este árbol no tiene naranjas"
+         end
+         cadena
+          
+      end
+      
       def cantidadProduccion
           if(@edad > ANYOPRODUCE)
             @produccion = @edad * NARANJASANYO

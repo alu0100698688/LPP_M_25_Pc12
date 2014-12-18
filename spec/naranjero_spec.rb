@@ -30,5 +30,15 @@ describe Naranjero::Arbol do
         end
    
     end
+    
+    describe "#recoger frutos" do
+        it "#recoletar una naranja pero no tiene" do
+           expect(@naranjo.recolectar_una).to eq("Lo sentimos pero este árbol no tiene naranjas") 
+            
+        end
+        it "#recolectar una naranja y si tiene" do
+            expect(@naranjoViejo.recolectar_una).to eq("¡Uy que rica estaba la naranja!")
+        end
+    end
 
 end
