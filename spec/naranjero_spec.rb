@@ -27,6 +27,7 @@ describe Naranjero::Arbol do
         end
         it "#Incrementar edad y muerte arbol" do
             expect(@naranjoViejo.uno_mas).to eq("Lo sentimos el árbol ha muerto") 
+            expect(@naranjoViejo.produccion).to eq(0)
         end
    
     end
@@ -39,6 +40,16 @@ describe Naranjero::Arbol do
         it "#recolectar una naranja y si tiene" do
             expect(@naranjoViejo.recolectar_una).to eq("¡Uy que rica estaba la naranja!")
         end
+    end
+    
+    describe "#Métodos de los threads" do
+       it "#Método crecer" do
+            @naranjo.respond_to?("crecer").should be (true)  
+       end
+       it "#Método recolectar" do
+            @naranjo.respond_to?("recolectar").should be (true)
+       end
+        
     end
 
 end

@@ -1,5 +1,5 @@
 #encoding: UTF-8
-require "naranjero/version"
+require_relative "naranjero/version"
 
 module Naranjero
   
@@ -13,6 +13,7 @@ module Naranjero
       def initialize(altura=0,edad=0)
         @altura = altura
         @edad = edad
+        @mutex = Mutex.new
         cantidadProduccion
       end
       
@@ -22,6 +23,7 @@ module Naranjero
           @edad += 1
           if @edad == MUERTE
               cadena = "Lo sentimos el árbol ha muerto"
+              @produccion = 0
           else
               cantidadProduccion
               cadena = "El árbol ha crecido! Ya tiene #{@edad} años"
@@ -48,10 +50,35 @@ module Naranjero
             @produccion = 0
           end
       end
+      def recolectar
+          Thread.new do 
+           10.times do
+            p recolectar_una
+           end
+           
+          end
+        
+        
+      end
+      def crecer
+        Thread.new do 
+           10.times do
+            p uno_mas
+           end
+          
+        end
+        
+      end 
       
+       
       
     end
   
   
   
 end
+
+
+a = Naranjero::Arbol.new(12.5,90)
+p a.recolectar
+p a.crecer
